@@ -39,36 +39,39 @@ class _RatingbarState extends State<Ratingbar> {
 
   @override
   Widget build(BuildContext context) {
-    return ListView.separated(
-      scrollDirection: widget.horizontalRatingbar ? Axis.horizontal : Axis.vertical,
-      itemBuilder: (context, index) {
-        return GestureDetector(
-              onPanUpdate: (details){
-                _updateRating(details.localPosition);
-              },
-              onPanDown: (details){
-                _updateRating(details.localPosition);
-              },
-              child: IconButton(
-                onPressed: () {
-                  setState(() {
-                    selectedIndex = index + 1;
-                  });
+    return SizedBox(
+      height: 50,
+      child: ListView.separated(
+        scrollDirection: widget.horizontalRatingbar ? Axis.horizontal : Axis.vertical,
+        itemBuilder: (context, index) {
+          return GestureDetector(
+                onPanUpdate: (details){
+                  _updateRating(details.localPosition);
                 },
-                icon: AnimatedScale(
-                  scale: index < selectedIndex ? 1.5 : 1.0,
-                  curve: widget.iconAnimation,
-                  duration: Duration(seconds: 2),
-                  child: Icon(
-                    index < selectedIndex ? widget.selectedIcon : widget.unSelectedIcon,
-                    color: index < selectedIndex ? widget.selectedIconColor : widget.unSelectedIconColor,
+                onPanDown: (details){
+                  _updateRating(details.localPosition);
+                },
+                child: IconButton(
+                  onPressed: () {
+                    setState(() {
+                      selectedIndex = index + 1;
+                    });
+                  },
+                  icon: AnimatedScale(
+                    scale: index < selectedIndex ? 1.5 : 1.0,
+                    curve: widget.iconAnimation,
+                    duration: Duration(seconds: 2),
+                    child: Icon(
+                      index < selectedIndex ? widget.selectedIcon : widget.unSelectedIcon,
+                      color: index < selectedIndex ? widget.selectedIconColor : widget.unSelectedIconColor,
+                    ),
                   ),
                 ),
-              ),
-        );
-      },
-      separatorBuilder: (context, index) => SizedBox(width: 10),
-      itemCount: widget.ratingCount,
+          );
+        },
+        separatorBuilder: (context, index) => SizedBox(width: 10),
+        itemCount: widget.ratingCount,
+      ),
     );
   }
 }
