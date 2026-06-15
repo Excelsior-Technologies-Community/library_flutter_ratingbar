@@ -199,7 +199,7 @@ Users can select ratings by simply dragging across the icons.
 
 ## Demo
 Tap Rating & Swipe Rating
-## Wee View
+## Web View
 <img src="assets/demo.gif" height="300">
 
 ## Mobile View
