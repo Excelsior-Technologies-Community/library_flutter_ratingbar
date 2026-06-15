@@ -7,6 +7,8 @@ class Ratingbar extends StatefulWidget {
   final Color? selectedIconColor;
   final Color? unSelectedIconColor;
   final Curve iconAnimation;
+  final Duration animationDuration;
+  final double iconSize;
   final bool horizontalRatingbar;
 
   const Ratingbar({
@@ -15,6 +17,8 @@ class Ratingbar extends StatefulWidget {
     this.selectedIcon = Icons.star,
     this.unSelectedIcon = Icons.star_border,
     this.horizontalRatingbar = true,
+    this.iconSize=20,
+    required this.animationDuration,
     this.selectedIconColor,
     this.unSelectedIconColor,
     this.iconAnimation=Curves.elasticInOut,
@@ -55,7 +59,7 @@ class _RatingbarState extends State<Ratingbar> {
                   onPressed: () {
                     setState(() {
                       if (selectedIndex == index + 1) {
-                        selectedIndex = 0; // Unselect all
+                        selectedIndex = 0;
                       } else {
                         selectedIndex = index + 1;
                       }
@@ -64,8 +68,9 @@ class _RatingbarState extends State<Ratingbar> {
                   icon: AnimatedScale(
                     scale: index < selectedIndex ? 1.5 : 1.0,
                     curve: widget.iconAnimation,
-                    duration: Duration(seconds: 2),
+                    duration: widget.animationDuration,
                     child: Icon(
+                      size: widget.iconSize,
                       index < selectedIndex ? widget.selectedIcon : widget.unSelectedIcon,
                       color: index < selectedIndex ? widget.selectedIconColor : widget.unSelectedIconColor,
                     ),
