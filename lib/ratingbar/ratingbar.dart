@@ -54,7 +54,11 @@ class _RatingbarState extends State<Ratingbar> {
                 child: IconButton(
                   onPressed: () {
                     setState(() {
-                      selectedIndex = index + 1;
+                      if (selectedIndex == index + 1) {
+                        selectedIndex = 0; // Unselect all
+                      } else {
+                        selectedIndex = index + 1;
+                      }
                     });
                   },
                   icon: AnimatedScale(
