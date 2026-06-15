@@ -42,9 +42,7 @@ class _RatingbarState extends State<Ratingbar> {
     return ListView.separated(
       scrollDirection: widget.horizontalRatingbar ? Axis.horizontal : Axis.vertical,
       itemBuilder: (context, index) {
-        return Row(
-          children: [
-            GestureDetector(
+        return GestureDetector(
               onPanUpdate: (details){
                 _updateRating(details.localPosition);
               },
@@ -67,8 +65,6 @@ class _RatingbarState extends State<Ratingbar> {
                   ),
                 ),
               ),
-            ),
-          ],
         );
       },
       separatorBuilder: (context, index) => SizedBox(width: 10),
