@@ -199,11 +199,8 @@ Users can select ratings by simply dragging across the icons.
 
 ## Demo
 Tap Rating & Swipe Rating
-```html
 <img src="assets/demo.gif" height="300">
 <img src="assets/mobiledemo.gif" height="300">
-
-```
 
 
 
